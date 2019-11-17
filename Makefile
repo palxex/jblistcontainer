@@ -7,7 +7,8 @@ $(TARGET): main.m crt1.o
 	ldid -S $@
 
 install: $(TARGET)
-	scpmux $< /usr/bin
+	scp -P${THEOS_DEVICE_PORT} $< root@${THEOS_DEVICE_IP}:/usr/bin
+	ssh -p${THEOS_DEVICE_PORT} root@${THEOS_DEVICE_IP} ldid -S /usr/bin/$<
 
 clean: $(TARGET)
 	rm $<

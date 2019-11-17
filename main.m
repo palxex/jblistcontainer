@@ -9,7 +9,9 @@ void listapps();
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         if( argc < 2 ) {
+            NSLog(@"Usage:%s bundleID [-u]",argv[0]);
             NSLog(@"Please provide a bundle id, or use -l for list all of installed apps!");
+            NSLog(@"Optional -u to view app container too");
             return -1;
         }
         if( strncmp(argv[1],"-l",sizeof("-l")) == 0 ) {
